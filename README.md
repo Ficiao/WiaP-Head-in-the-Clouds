@@ -1,5 +1,5 @@
 # WiaP-Head-in-the-Clouds
-Main repo for wiap game files, a game by Lucky Fluke Studios.
+Main repo for wiap game files, a game by The Fluke Platform.
 
 Taskovi: https://app.clickup.com/24479900/v/l/6-186368502-1
 
