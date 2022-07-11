@@ -14,7 +14,7 @@ namespace MainMenu
 
         public void LoadPlatformer()
         {
-
+            SceneManager.LoadScene("BossLevel");
         }
 
         public void Quit()

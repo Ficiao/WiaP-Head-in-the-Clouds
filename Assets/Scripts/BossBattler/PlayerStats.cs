@@ -16,7 +16,7 @@ namespace BossBattler {
                 UIManager.Instance.TakeDamage();
                 if (_health <= 0)
                 {
-                    GameController.Instance.LoseGame();
+                    GameManager.Instance.LoseGame();
                     gameObject.SetActive(false);
                     return;
                 }

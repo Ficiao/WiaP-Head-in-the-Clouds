@@ -24,7 +24,7 @@ namespace BossBattler {
             {
                 collision.GetComponent<SpriteRenderer>().sprite = _closedGate;
                 bossSpawner.IsActiveGate = false;
-                GameController.Instance.SpawnBoss(bossSpawner, _equipedKey.GateColor);
+                GameManager.Instance.SpawnBoss(bossSpawner, _equipedKey.GateColor);
                 _equipedKey.transform.parent = null;
                 _equipedKey.gameObject.SetActive(false);
                 _equipedKey = null;

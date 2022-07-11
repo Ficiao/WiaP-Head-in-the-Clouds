@@ -12,10 +12,10 @@ namespace BossBattler
         Pink
     }
 
-    public class GameController : MonoBehaviour
+    public class GameManager : MonoBehaviour
     {
-        private static GameController _instance;
-        public static GameController Instance { get { return _instance; } }
+        private static GameManager _instance;
+        public static GameManager Instance { get { return _instance; } }
 
         [SerializeField] private List<BossSpawner> _greenSpawns;
         [SerializeField] private List<BossSpawner> _blueSpawns;
@@ -40,7 +40,7 @@ namespace BossBattler
 
         private void Start()
         {
-            SpawnBoss();
+            //SpawnBoss();
         }
 
         public void SpawnBoss(BossSpawner doorClosed = null, GateColor gateColor = GateColor.Green)
