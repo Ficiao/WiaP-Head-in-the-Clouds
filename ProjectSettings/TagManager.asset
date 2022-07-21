@@ -8,6 +8,7 @@ TagManager:
   - Neprijatelj
   - Igrac
   - Door
+  - Wall
   layers:
   - Default
   - TransparentFX

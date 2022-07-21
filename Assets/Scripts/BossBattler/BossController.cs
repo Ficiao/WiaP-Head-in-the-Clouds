@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace BossBattler
 {
-    public class BossController : ShootingController
+    public class BossController : ShootingController, IEnemy
     {
         [SerializeField] float shootingRate = 1f;
         [SerializeField] int numberOfBullets = 10;

@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,9 +15,11 @@ namespace BossBattler
         private static GameManager _instance;
         public static GameManager Instance { get { return _instance; } }
 
+        [Header("Spawners")]
         [SerializeField] private List<BossSpawner> _greenSpawns;
         [SerializeField] private List<BossSpawner> _blueSpawns;
         [SerializeField] private List<BossSpawner> _pinkSpawns;
+        [Header("Key Sprites")]
         [SerializeField] private Sprite _greenKey;
         [SerializeField] private Sprite _blueKey;
         [SerializeField] private Sprite _pinkKey;
@@ -40,7 +40,7 @@ namespace BossBattler
 
         private void Start()
         {
-            //SpawnBoss();
+                SpawnBoss();
         }
 
         public void SpawnBoss(BossSpawner doorClosed = null, GateColor gateColor = GateColor.Green)

@@ -789,7 +789,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -1050,19 +1049,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 597018910}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2048789007}
-        m_TargetAssemblyTypeName: BossBattler.UIManager, Assembly-CSharp
-        m_MethodName: Quit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &597018910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1184,19 +1171,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 679184013}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2048789007}
-        m_TargetAssemblyTypeName: BossBattler.UIManager, Assembly-CSharp
-        m_MethodName: PlayAgain
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &679184013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1318,19 +1293,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 681661105}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2048789007}
-        m_TargetAssemblyTypeName: BossBattler.UIManager, Assembly-CSharp
-        m_MethodName: Quit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &681661105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3119,19 +3082,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1476063074}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2048789007}
-        m_TargetAssemblyTypeName: BossBattler.UIManager, Assembly-CSharp
-        m_MethodName: PlayAgain
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1476063074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4351,7 +4302,7 @@ GameObject:
   - component: {fileID: 2038874316}
   - component: {fileID: 2038874315}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4366,21 +4317,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 2038874314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec372f821e2040c4c9fd20d9b3c2be13, type: 3}
+  m_Script: {fileID: 11500000, guid: be24d6180d37dc242870d2ba87068145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _greenSpawns:
-  - {fileID: 1212359297}
-  - {fileID: 1744304111}
   - {fileID: 457615692}
+  - {fileID: 1744304111}
+  - {fileID: 1212359297}
   _blueSpawns:
-  - {fileID: 1773816695}
-  - {fileID: 884584674}
   - {fileID: 1782402950}
+  - {fileID: 884584674}
+  - {fileID: 1773816695}
   _pinkSpawns:
-  - {fileID: 1406252238}
-  - {fileID: 946208289}
   - {fileID: 1920984730}
+  - {fileID: 946208289}
+  - {fileID: 1406252238}
   _greenKey: {fileID: 21300000, guid: 2b42c1a3b21e6314f80dc1d5c0754cda, type: 3}
   _blueKey: {fileID: 21300000, guid: 0e266e8e6681dbd47a6da9965c93c1a3, type: 3}
   _pinkKey: {fileID: 21300000, guid: db3bd3b94a94c9242975305afc7ab21e, type: 3}
@@ -4451,6 +4402,10 @@ MonoBehaviour:
   - {fileID: 68255308}
   _loseScreen: {fileID: 1130418908}
   _winScreen: {fileID: 1793358603}
+  _winPlayAgainButton: {fileID: 679184012}
+  _winQuitButton: {fileID: 681661104}
+  _losePlayAgainButton: {fileID: 1476063073}
+  _loseQuitButton: {fileID: 597018909}
 --- !u!4 &2109382223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3204334419262454684, guid: 2b080d6e14de1d34190de60d0f28d29e, type: 3}

@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace BossBattler {
+namespace BossBattler
+{
     public class PlayerEquiped : MonoBehaviour
     {
         [SerializeField] private Sprite _closedGate;

@@ -341,19 +341,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 273577055}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1533383746}
-        m_TargetAssemblyTypeName: MainMenu.UIManager, Assembly-CSharp
-        m_MethodName: LoadBossBattle
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &273577055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -896,19 +884,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1470817991}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1533383746}
-        m_TargetAssemblyTypeName: MainMenu.UIManager, Assembly-CSharp
-        m_MethodName: LoadPlatformer
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1470817991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -991,6 +967,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 666f3f6cb6913e541ae8e23160107a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _bossBattleButton: {fileID: 273577054}
+  _platformerButton: {fileID: 1470817990}
+  _quitButton: {fileID: 1915125976}
 --- !u!1 &1915125974
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,19 +1053,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1915125977}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1533383746}
-        m_TargetAssemblyTypeName: MainMenu.UIManager, Assembly-CSharp
-        m_MethodName: Quit
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1915125977
 MonoBehaviour:
   m_ObjectHideFlags: 0
