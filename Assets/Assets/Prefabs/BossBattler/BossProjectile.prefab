@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 6051882396392080622}
   m_Layer: 0
   m_Name: BossProjectile
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,7 +143,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.7426944, y: 0.7426944}
   m_EdgeRadius: 0
 --- !u!114 &2204233285615186971
 MonoBehaviour:
@@ -157,8 +157,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6e63b2f7dcdd1e4c9c42d941d88d500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 7
+  _speed: 7.25
   _damage: 1
+  _lifeDuration: 5
 --- !u!50 &6051882396392080622
 Rigidbody2D:
   serializedVersion: 4

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7530249594181270528}
   - component: {fileID: 7530249594181270530}
   - component: {fileID: 7530249594181270529}
+  - component: {fileID: -8768585787833450171}
   m_Layer: 0
   m_Name: Spinner
   m_TagString: Untagged
@@ -125,6 +126,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 200
-  _moveSpeed: 0.05
+  _moveSpeed: 5
   damage: 1
   _goLeft: 0
+--- !u!50 &-8768585787833450171
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9105688806424409260}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
