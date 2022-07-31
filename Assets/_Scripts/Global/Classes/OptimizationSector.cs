@@ -19,6 +19,7 @@ namespace Platformer {
             {
                 foreach (GameObject responsability in _responsabilities)
                 {
+                    if (responsability == null) continue;
                     responsability?.SetActive(true);
                 }
 
@@ -32,6 +33,7 @@ namespace Platformer {
             {
                 foreach(GameObject responsability in _responsabilities)
                 {
+                    if (responsability == null) continue;
                     responsability?.SetActive(false);
                 }
 

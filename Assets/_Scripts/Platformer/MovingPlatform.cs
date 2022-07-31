@@ -49,20 +49,35 @@ namespace Platformer {
             }
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        public void DragPlayer(Transform player)
         {
-            if(!_goingUp && collision.transform.CompareTag("Player"))
-            {
-                _player = collision.transform;
-            }
+            _player = player;
         }
 
-        private void OnCollisionExit2D(Collision2D collision)
+        public void FreePlayer()
         {
-            if (!_goingUp && collision.transform.CompareTag("Player"))
-            {
-                _player = null;
-            }
+            _player = null;
         }
+
+        private void OnDisable()
+        {
+            _player = null;
+        }
+
+        //private void OnCollisionEnter2D(Collision2D collision)
+        //{
+        //    if(!_goingUp && collision.transform.CompareTag("Player"))
+        //    {
+        //        _player = collision.transform;
+        //    }
+        //}
+
+        //private void OnCollisionExit2D(Collision2D collision)
+        //{
+        //    if (!_goingUp && collision.transform.CompareTag("Player"))
+        //    {
+        //        _player = null;
+        //    }
+        //}
     } 
 }

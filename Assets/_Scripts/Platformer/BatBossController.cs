@@ -75,6 +75,11 @@ namespace Platformer {
                 {
                     _currentAttackPattern = AttackPattern.Raising;
                     _batAnimator.SetBool("Dashing", false);
+                    if(_currentDashNumber + 1 == _numberOfDashes && collision.CompareTag("Wall"))
+                    {
+                        _goLeft = !_goLeft;
+                        return;
+                    }
                 }
             }
             if (collision.CompareTag("Player"))
@@ -176,7 +181,7 @@ namespace Platformer {
 
         public Projectile GetSmallBullet()
         {
-            if (_largeBossProjectileQueue.Count > 0)
+            if (_smallBossProjectileQueue.Count > 0)
             {
                 Projectile projectile = _smallBossProjectileQueue.Dequeue();
                 projectile.gameObject.SetActive(true);

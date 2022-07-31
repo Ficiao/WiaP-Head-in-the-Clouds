@@ -44,6 +44,8 @@ namespace Platformer
 
         public void BossKilled()
         {
+            _camera.orthographicSize -= 2f;
+            _cameraScript.Offset = new Vector3(_cameraScript.Offset.x, _cameraScript.Offset.y - 3.5f, _cameraScript.Offset.z);
             StartCoroutine(EncounterEnd());
         }
 
@@ -57,8 +59,6 @@ namespace Platformer
             ScreenShake.Instance.StartShaking(_startWaitTime);
             _playerStats.ShouldTakeDamage = false;
             yield return new WaitForSeconds(_startWaitTime);
-            _cameraScript.Offset = new Vector3(_cameraScript.Offset.x, _cameraScript.Offset.y - 3.5f, _cameraScript.Offset.z);
-            _camera.orthographicSize -= 2f;
             _bossMusic.Stop();
             _player.Activate();
             _playerWeapon.enabled = true;

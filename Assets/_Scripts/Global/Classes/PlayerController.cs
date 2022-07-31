@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     private bool _isGrounded = false;
     private bool _canJump = true;
     private Collider2D _ownedCollider;
+    private Platformer.MovingPlatform _draggingPlatform = null;
 
     public Vector3 Velocity { get; private set; }
     public FrameInput CurrentInput { get; private set; }
@@ -72,15 +73,17 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    //private void OnDrawGizmos()
-    //{
-    //    if (EditorApplication.isPlaying)
-    //    {
-    //        Gizmos.color = Color.red;
-    //        Gizmos.DrawRay(_ownedCollider.bounds.center, -1 * transform.up * _groundCastLength);
-    //        Gizmos.DrawWireCube(_ownedCollider.bounds.center + (-1 * transform.up * _groundCastLength), _ownedCollider.bounds.size * _groundCastSize);
-    //    }
-    //}
+    private void OnDrawGizmos()
+    {
+#if (UNITY_EDITOR)
+        if (EditorApplication.isPlaying)
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(_ownedCollider.bounds.center, -1 * transform.up * _groundCastLength);
+            Gizmos.DrawWireCube(_ownedCollider.bounds.center + (-1 * transform.up * _groundCastLength), _ownedCollider.bounds.size * _groundCastSize);
+        }
+#endif
+    }
 
     private void Update()
     {
@@ -91,16 +94,36 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D[] hits;
         _isGrounded = false;
         hits = Physics2D.BoxCastAll(_ownedCollider.bounds.center, _ownedCollider.bounds.size * _groundCastSize, 0, Vector2.down, _groundCastLength, _layerMask);
-        if (hits.Length > 0)
+        _isGrounded = false;
+        _canJump = false;
+        foreach(RaycastHit2D hit in hits)
         {
             _isGrounded = true;
             _canJump = true;
+            Platformer.MovingPlatform movingPlatform= hit.transform.GetComponent<Platformer.MovingPlatform>();
+            if (movingPlatform == null)
+            {
+                _draggingPlatform?.FreePlayer();
+                _draggingPlatform = null;
+            }
+            else if (movingPlatform != _draggingPlatform)
+            {
+                _draggingPlatform?.FreePlayer();
+                _draggingPlatform = movingPlatform;
+                _draggingPlatform.DragPlayer(transform);
+            }
+            break;
         }
-        else
-        {
-            _isGrounded = false;
-            _canJump = false;
-        }
+        //if (hits.Length > 0)
+        //{
+        //    _isGrounded = true;
+        //    _canJump = true;
+        //}
+        //else
+        //{
+        //    _isGrounded = false;
+        //    _canJump = false;
+        //}
 
         if (transform.localPosition.y < -100) transform.localPosition = new Vector3(0, 0, 0);
 

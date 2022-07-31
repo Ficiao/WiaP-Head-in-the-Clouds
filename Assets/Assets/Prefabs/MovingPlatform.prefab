@@ -273,7 +273,7 @@ MonoBehaviour:
   _lowerPositionY: 32.25
   _higherPositionY: 48.5
   _goingUp: 0
-  _moveSpeed: 0.02
+  _moveSpeed: 0.2
 --- !u!114 &906683748536545113
 MonoBehaviour:
   m_ObjectHideFlags: 0

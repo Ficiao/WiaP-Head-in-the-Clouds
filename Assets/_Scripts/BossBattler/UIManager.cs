@@ -32,6 +32,7 @@ namespace BossBattler
         [SerializeField] private Button _loseQuitButton = null;
         [SerializeField] private Button _pauseResumeButton = null;
         [SerializeField] private Button _pauseMainMenuButton = null;
+        [SerializeField] private Button _pauseRestartButton = null;
         [SerializeField] private Button _pauseSettingsButton = null;
         [SerializeField] private Button _pauseQuitButton = null;
         [SerializeField] private Button _pauseButton = null;
@@ -70,6 +71,7 @@ namespace BossBattler
             _loseQuitButton.onClick.AddListener(Quit);
             _pauseResumeButton.onClick.AddListener(Resume);
             _pauseMainMenuButton.onClick.AddListener(MainMenu);
+            _pauseRestartButton.onClick.AddListener(PlayAgain);
             _pauseSettingsButton.onClick.AddListener(Settings);
             _pauseQuitButton.onClick.AddListener(Quit);
             _settingsBackButton.onClick.AddListener(SettingsBack);
