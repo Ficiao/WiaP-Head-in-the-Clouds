@@ -41,10 +41,12 @@ namespace Platformer {
 
             if (transform.position.y == _higherPositionY && _goingUp)
             {
+                _player = null;
                 transform.Translate(0, -_higherPositionY + _lowerPositionY, 0);
             }
             else if (transform.position.y == _lowerPositionY && !_goingUp)
             {
+                _player = null;
                 transform.Translate(0, _higherPositionY - _lowerPositionY, 0);
             }
         }
@@ -63,21 +65,5 @@ namespace Platformer {
         {
             _player = null;
         }
-
-        //private void OnCollisionEnter2D(Collision2D collision)
-        //{
-        //    if(!_goingUp && collision.transform.CompareTag("Player"))
-        //    {
-        //        _player = collision.transform;
-        //    }
-        //}
-
-        //private void OnCollisionExit2D(Collision2D collision)
-        //{
-        //    if (!_goingUp && collision.transform.CompareTag("Player"))
-        //    {
-        //        _player = null;
-        //    }
-        //}
     } 
 }

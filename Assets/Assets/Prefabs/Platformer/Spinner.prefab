@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rotationSpeed: 200
-  _moveSpeed: 5
+  _moveSpeed: 6.5
   damage: 1
   _goLeft: 0
 --- !u!50 &-8768585787833450171

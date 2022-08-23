@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
@@ -6,6 +7,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    [SerializeField] private float _dashCooldown;
+    [SerializeField] private float _dashSpeed;
+    [SerializeField] private float _dashDuration;
+    [SerializeField] private float _sameDirectionDashMultiplyer;
+    [SerializeField] private TrailRenderer _trailRenderer;
     [Header("GROUND CHECK")]
     [SerializeField] private float _groundCastLength;
     [SerializeField] private float _groundCastSize;
@@ -17,6 +23,9 @@ public class PlayerController : MonoBehaviour {
     private bool _canJump = true;
     private Collider2D _ownedCollider;
     private Platformer.MovingPlatform _draggingPlatform = null;
+    private bool _isDashing = false;
+    private Vector2 _dashDirection;
+    private float _timeSinceLastDash = 0f;
 
     public Vector3 Velocity { get; private set; }
     public FrameInput CurrentInput { get; private set; }
@@ -30,6 +39,7 @@ public class PlayerController : MonoBehaviour {
         Invoke(nameof(Activate), 0.5f);
 
         _ownedCollider = GetComponent<BoxCollider2D>();
+        _timeSinceLastDash = _dashCooldown + 1f;
     }
     public void Activate() =>  _active = true;
     public void Deactivate() => _active = false;
@@ -88,6 +98,38 @@ public class PlayerController : MonoBehaviour {
     private void Update()
     {
         GatherInput();
+        if (CurrentInput.Dash && UIManager.Instance.DashReady)
+        {
+            UIManager.Instance.DashUsed(_dashCooldown);
+            StartCoroutine(Dashing(_dashDuration));
+        }
+    }
+
+    private IEnumerator Dashing(float duration)
+    {
+        _trailRenderer.emitting = true;
+        _dashDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float length = Mathf.Sqrt(_dashDirection.x * _dashDirection.x + _dashDirection.y * _dashDirection.y);
+        _dashDirection.x = _dashDirection.x / length;
+        _dashDirection.y = _dashDirection.y / length;
+        _timeSinceLastDash = 0f;
+
+        if(_dashDirection.x * _currentHorizontalSpeed > 0f)
+        {
+            _dashDirection.x = _dashDirection.x * _sameDirectionDashMultiplyer;
+        }
+
+        _isDashing = true;
+        _timeSinceLastDash = -Time.deltaTime;
+        while (_timeSinceLastDash <= duration)
+        {
+            _timeSinceLastDash += Time.deltaTime;
+            yield return null;
+        }
+        _isDashing = false;
+        _trailRenderer.emitting = false;
+        _currentHorizontalSpeed = Mathf.Clamp(_currentHorizontalSpeed, -_moveClamp * 2, _moveClamp * 2);
+        _currentVerticalSpeed = Mathf.Clamp(_currentVerticalSpeed, _fallClamp, -_fallClamp);
     }
 
     private void FixedUpdate() {
@@ -149,11 +191,17 @@ public class PlayerController : MonoBehaviour {
         CalculateJumpApex();
         CalculateGravity(); 
         CalculateJump();
-
+        if (_isDashing) Dash();
         MoveCharacter(); 
 
         if(CurrentInput.X != 0) _playerAnimator.SetBool("Running", true);
         else _playerAnimator.SetBool("Running", false);
+    }
+
+    private void Dash()
+    {
+        _currentVerticalSpeed = _dashDirection.y * _dashSpeed;
+        _currentHorizontalSpeed = _dashDirection.x * _dashSpeed;
     }
 
     #region Gather Input
@@ -162,7 +210,8 @@ public class PlayerController : MonoBehaviour {
         CurrentInput = new FrameInput {
             JumpDown = Input.GetKeyDown(KeyCode.Space) && _canJump,
             JumpUp = Input.GetKeyUp(KeyCode.Space),
-            X = (Input.GetKey(KeyCode.D) ? 1 : 0) + (Input.GetKey(KeyCode.A) ? -1 : 0)
+            X = (Input.GetKey(KeyCode.D) ? 1 : 0) + (Input.GetKey(KeyCode.A) ? -1 : 0),
+            Dash = Input.GetKeyDown(KeyCode.LeftShift)
         };
         if (CurrentInput.JumpDown) {
             _lastJumpPressed = Time.time;
@@ -281,4 +330,5 @@ public struct FrameInput
     public float X, Y;
     public bool JumpDown;
     public bool JumpUp;
+    public bool Dash;
 }
